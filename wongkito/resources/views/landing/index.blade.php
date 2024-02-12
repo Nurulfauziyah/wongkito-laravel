@@ -35,7 +35,7 @@
      <script src="https://unpkg.com/feather-icons"></script>
 
      <!-- favicon -->
-     <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
     
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
