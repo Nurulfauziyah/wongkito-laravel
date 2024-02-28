@@ -36,21 +36,21 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 route::controller(layout::class)->group(function(){
     route::get('/layout/index','index')->name('index');
-     route::get('/admin/gallery','gallery')->name('gallery');
-    route::get('/admin/customer','customer')->name('customer');
-    route::get('/admin/produk','produk')->name('produk');
-    route::get('/admin/addproduk','addproduk')->name('addproduk');
-    route::get('/admin/addgallery','addgallery')->name('addgallery');
+    //  route::get('/admin/gallery','gallery')->name('gallery');
+    // route::get('/admin/customer','customer')->name('customer');
+    // route::get('/admin/produk','produk')->name('produk');
+    // route::get('/admin/addproduk','addproduk')->name('addproduk');
+    // route::get('/admin/addgallery','addgallery')->name('addgallery');
     
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'as' => 'admin.'], function () {
     Route::get('/customer', [layout::class, 'customer'])->name('customer');
     Route::get('/adminpage', [layout::class, 'adminpage'])->name('adminpage');
-    // route::get('/addproduk',[layout::class,'addproduk'])->name('addproduk');
-    // route::get('/addgallery',[layout::class,'addgallery'])->name('addgallery');
-    // route::get('/produk',[ProdukController::class,"produk"])->name('produk');
-    // route::get('/gallery',[GalleryController::class,'gallery'])->name('gallery');
+    route::get('/addproduk',[layout::class,'addproduk'])->name('addproduk');
+    route::get('/addgallery',[layout::class,'addgallery'])->name('addgallery');
+    route::get('/produk',[ProdukController::class,"produk"])->name('produk');
+    route::get('/gallery',[GalleryController::class,'gallery'])->name('gallery');
 });
 route::get('/hapus-produk/{id}',[ProdukController::class,"destroy"])->name('hapus-produk');
 route::get('/hapus-gallery/{id}',[GalleryController::class,"destroy"])->name('hapus-gallery');
