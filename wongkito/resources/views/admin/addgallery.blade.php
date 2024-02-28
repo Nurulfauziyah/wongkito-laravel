@@ -4,36 +4,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Uci | Admin Page</title>
+  <title>Admin Uci | Add Gallery</title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="{{ asset ('/') }}https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset ('/') }}plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="{{ asset ('/') }}https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Tempusdominus Bootstrap 4 -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/jqvmap/jqvmap.min.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="{{ asset ('/') }}plugins/select2/css/select2.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset ('/') }}dist/css/adminlte.min.css">
-  <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/daterangepicker/daterangepicker.css">
-  <!-- summernote -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/summernote/summernote-bs4.min.css">
 
    <!-- favicon -->
      <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini">
 <div class="wrapper">
-
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -67,7 +53,6 @@
      </ul>
     </ul>
   </nav>
-
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
@@ -143,7 +128,6 @@
               </li>
             </ul>
           </li>
-          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -151,82 +135,74 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+ <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
+     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Admin WongKito</h1>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
+            <h1>Gallery</h1>
+          </div>
+        </div>
       </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+    </section>
 
     <!-- Main content -->
+        <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
         <div class="row">
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>Customer List</h3>
-                <p>Admin Wongkito</p>
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-secondary">
+              <div class="card-header">
+                <h3 class="card-title">Tambah Gallery</h3>
               </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
+
+              <!-- form start -->
+              <form method="POST" action="{{route ('SimpanGallery')}}" id="myForm" enctype="multipart/form-data">
+                @csrf
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="Gambarbuku">Masukkan Gambar</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="Gambarbuku" placeholder="masukkan gambar buku" name="gambar">
+                        <label class="custom-file-label" for="Gambarbuku">Choose File</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="desc">Deskripsi</label>
+                    <input type="text" class="form-control" id="desc" placeholder="Masukkan Deskripsi Gambar" name="desc">
+                  </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary" value="add produk">Submit</button>
+                </div>
+              </form>
+            </div>
               </div>
-              <a href="/admin/customer" class="small-box-footer">Click Here <i class="fas fa-arrow-circle-right"></i></a>
             </div>
 
-            
-          </div>
-
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-secondary">
-              <div class="inner">
-                <h3>Produk List</h3>
-                <p>Admin Wongkito</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="/admin/produk" class="small-box-footer">Click Here <i class="fas fa-arrow-circle-right"></i></a>
-            </div> 
-          </div>
-
-           <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>gallery List</h3>
-                <p>Admin Wongkito</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="/admin/produk" class="small-box-footer">Click Here <i class="fas fa-arrow-circle-right"></i></a>
-            </div> 
           </div>
         </div>
-        
-            <!-- /.card -->
-        </section>
-          <!-- right col -->
-        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+
+
+    <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
+
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
+    <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.1.0
     </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -234,41 +210,23 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="{{ asset ('/') }}plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset ('/') }}plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
+<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
-<script src="{{ asset ('/') }}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="{{ asset ('/') }}plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="{{ asset ('/') }}plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="{{ asset ('/') }}plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="{{ asset ('/') }}plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="{{ asset ('/') }}plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="{{ asset ('/') }}plugins/moment/moment.min.js"></script>
-<script src="{{ asset ('/') }}plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="{{ asset ('/') }}plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="{{ asset ('/') }}plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="{{ asset ('/') }}plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Select2 -->
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset ('/') }}dist/js/adminlte.js"></script>
+<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ asset ('/') }}dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="{{ asset ('/') }}dist/js/pages/dashboard.js"></script>
+<script src="{{ asset('dist/js/demo.js') }}"></script>
+<script>
+    $(function () {
+      $('.select2').select2()
+    });
+</script>
 </body>
 </html>

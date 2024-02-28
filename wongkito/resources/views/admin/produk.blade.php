@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"> 
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Uci | Customer</title>
+  <title>Admin Uci | Tables Product</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset ('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="{{ asset ('/') }}plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="{{ asset ('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset ('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+  <link rel="stylesheet" href="{{ asset ('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
   <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset ('/') }}dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="{{ asset ('dist/css/adminlte.min.css') }}">
 
-   <!-- favicon -->
+    <!-- favicon -->
      <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
 </head>
 <body class="hold-transition sidebar-mini">
@@ -138,11 +138,13 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+      <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Customer List</h1>
+            <h1>Produk List</h1>
+            <br>
+            <a class="btn btn-secondary" href="/admin/addproduk" > Add Produk </a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -154,33 +156,39 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Customer Name</th>
-                    <th>Email</th>
-                    <th>Number</th>
-                    <th>Message</th>
-                    <th>Aksi</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  @foreach ($data as $item)
-                    <tr>
-                        <td>{{ $item->id }}</td>
-                        <td>{{ $item->name }}</td>
-                        <td>{{ $item->email }}</td>
-                        <td>{{ $item->number }}
-                        <td>{{ $item->message}}</td>
-                         <td><a class="btn btn-danger" href="{{ route('delete-customer',$item->id) }}">Delete </a> </td>
-                     </tr>
-                  @endforeach
-                
-                  </tbody>
-                </table>
+              <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Nama</th>
+                                <th>Deskripsi</th>
+                                 <th>Link</th>
+                                <th>Price</th>
+                                <th>Image</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($produks as $key => $produk)
+                            <tr>
+                                <td>{{  $key + 1}}</td>
+                                <td>{{ $produk->name }}</td>
+                                <td>{{ $produk->description }}</td>
+                                <td><a href="{{ $produk->link }}">{{ $produk->link }}</a></td>
+                                <td>{{ $produk->price }}</td>
+                                <td><img width="100" height="100" src="{{ Storage::url($produk->gambar) }}" alt=""></td>
+                                
+                                  <td><a class="btn btn-success" href="{{ route('edit',$produk->id) }}">Edit </a> <a class="btn btn-danger" href="{{ route('hapus-produk',$produk->id) }}" }}">Delete </a> </td>
+                                
+                            </tr>
+                            @endforeach
+                            
+                        </tbody>
+                    </table>
+                    <br>
+                    {!! $produks->withQueryString()->links('pagination::bootstrap-5') !!}
+                    
               </div>
               <!-- /.card-body -->
             </div>
@@ -197,14 +205,12 @@
     </section>
     <!-- /.content -->
   </div>
-</div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
+    <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.1.0
     </div>
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
   </footer>
 
   <!-- Control Sidebar -->
@@ -212,6 +218,7 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
+</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -232,9 +239,9 @@
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE->
-<script src="dist/js/adminlte.min.js"></script>
+<script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTEemo purposes -->
-<script src="dist/js/demo.js"></script>
+<script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- Page specific script -->
 <script>
   $(function () {
@@ -255,3 +262,5 @@
 </script>
 </body>
 </html>
+
+

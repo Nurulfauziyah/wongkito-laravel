@@ -8,6 +8,7 @@
     
     <!-- Style CSS -->
     <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css"/>
+     <link rel="stylesheet" href="{{ asset('assets') }}/css/lightbox.css"/>
 
     <!-- jQuery -->
     <script src="{{ asset('assets') }}/js/jquery.js"></script>
@@ -41,11 +42,11 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/floating-wpp.min.css">
 
-  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
     <!-- light slider js -->
-    <script src="{{ asset('assets') }}/js/lightslider.js"></script>
+   <script src="{{ asset('assets') }}/js/lightslider.js"></script>
 
   </head>
 <body>
@@ -55,14 +56,14 @@
         <a href="#" class="navbar-logo">Wong<span>Kito</span></a>
 
         <div class="navbar-nav">
-         <a href="#home">Home</a>
          <a href="#superiority">Superiority</a>
-         <a href="#menu">Our Menu</a>
+         <a href="#menu">Menu</a>
+         <a href="#gallery">Gallery</a>
          <a href="#contact">Contact us</a>
+         <a href="https://wa.link/9udmxm" class="chat">Whatsapp Chat</a>
         </div>
 
         <div class="navbar-extra">
-            <a href="https://wa.link/9udmxm" class="chat">Whatsapp Chat</a>
             <a href="#"id="hamburger-menu"><i data-feather="menu"></i></a>
         </div>
     </nav>
@@ -120,115 +121,47 @@
     </section>
     
     <!-- Menu Section -->
-    <section id="menu" class="menu">
+ <section id="menu" class="menu">
         <div class="card-menu-title">
           <h4 data-aos="zoom-in"data-aos-duration="10000" >Our Menu<span>Pick Your Favourite</span></h4>
         </div>
-  
-        <ul id="autoWidth" class="cs-hidden">
-          <li class="item-a">
-            <div class="box">
-              <div class="slide-img">
-                <img src="{{ asset('assets/images/adaan.png') }}" alt="adaan"">
-                <div class="overlay">
-                  <a href=" https://wa.link/xuqykx" class="buy-btn">Buy Now </a>
-                </div>
-              </div>
-              <div class="detail-box">
-                <div class="type">
-                  <a href="">Pempek adaan</a><span>WongKito</span>
-                </div>
-                <a href="" class="price">25.000</a>
-              </div>
-            </div>
-          </li>
 
-          <li class="item-b">
+     <ul id="autoWidth" class="cs-hidden">
+           @forelse ($produks as $produk)
+        <li class="item-a">
             <div class="box">
-              <div class="slide-img">
-                <img src="{{ asset('assets/images/lenjer2.png') }}" alt="">
-                <div class="overlay">
-                  <a href="https://wa.link/um2itg" class="buy-btn">Buy Now</a>
+                <div class="slide-img">
+                    <img src="{{ Storage::url($produk->gambar) }}" alt="{{ $produk->name }}">
+                    <div class="overlay">
+                        <a href="{{ $produk->link }}" class="buy-btn">Buy Now</a>
+                    </div>
                 </div>
-              </div>
-              <div class="detail-box">
-                <div class="type">
-                  <a href="">Pempek lenjer</a><span>WongKito</span>
+                <div class="detail-box">
+                    <div class="type">
+                        <a href="">{{ $produk->name }}</a><span>{{ $produk->description }}</span>
+                    </div>
+                    <a href="" class="price">{{ $produk->price }}</a>
                 </div>
-                <a href="" class="price">25.000</a>
-              </div>
             </div>
-          </li> 
-
-          <li class="item-c">
-            <div class="box">
-              <div class="slide-img">
-                <img src="{{ asset('assets/images/kapal2.png') }}" alt="">
-                <div class="overlay">
-                  <a href="https://wa.link/ky0fwn" class="buy-btn">Buy Now</a>
-                </div>
-              </div>
-              <div class="detail-box">
-                <div class="type">
-                  <a href="">Pempek kapal selem</a><span>WongKito</span>
-                </div>
-                <a href="" class="price">25.000</a>
-              </div>
-            </div>
-          </li>
-
-          <li class="item-d">
-            <div class="box">
-              <div class="slide-img">
-                <img src="{{ asset('assets/images/kriting2.png') }}" alt="">
-                <div class="overlay">
-                  <a href="https://wa.link/4x33oc" class="buy-btn">Buy Now</a>
-                </div>
-              </div>
-              <div class="detail-box">
-                <div class="type">
-                  <a href="">Pempek kriting</a><span>WongKito</span>
-                </div>
-                <a href="" class="price">25.000</a>
-              </div>
-            </div>
-          </li>
-
-          <li class="item-e">
-            <div class="box">
-              <div class="slide-img">
-                <img src="{{ asset('assets/images/kulit2.png') }}" alt="">
-                <div class="overlay">
-                  <a href="https://wa.link/b6eyg9" class="buy-btn">Buy Now</a>
-                </div>
-              </div>
-              <div class="detail-box">
-                <div class="type">
-                  <a href="">Pempek kulit</a><span>WongKito</span>
-                </div>
-                <a href="" class="price">25.000</a>
-              </div>
-            </div>
-          </li>
-
-          <li class="item-f">
-            <div class="box">
-              <div class="slide-img">
-                <img src="{{ asset('assets/images/pastel2.png') }}" alt="">
-                <div class="overlay">
-                  <a href="https://wa.link/nhuhod" class="buy-btn">Buy Now</a>
-                </div>
-              </div>
-              <div class="detail-box">
-                <div class="type">
-                  <a href="">Pempek pastel</a><span>WongKito</span>
-                </div>
-                <a href="" class="price">25.000</a>
-              </div>
-            </div>
-          </li>
+        </li>
+         @empty
+    <li>Tidak ada produk yang tersedia saat ini.</li>
+        @endforelse
         </ul> 
-    </section>
+</section>
+
+  <!-- Galeri -->
+ <section id="gallery" class="contact">
+        <h4 data-aos="fade-down" data-aos-duration="10000">Our <span>Gallery</span> </h4>
+        <div class="container">
+           @foreach ($gallerys as $gallery)
+          <div class="image-container">
+             <div class="image"><img src="{{ Storage::url($gallery->gambar) }}" alt="{{ $gallery->description }}"></div>
+          </div>
+             @endforeach
+        </div>  
+</section>
+    
     
     <!-- Contact Us -->
     <section id="contact" class="contact">
@@ -357,10 +290,10 @@ $('#myDiv').floatingWhatsApp({
     });
 </script>
 
+
       <!-- my Java Script -->
     <script src="{{ asset('assets') }}/js/script.js "></script>  
-     <!-- my Java Script -->
-    <script src="{{ asset('assets') }}/js/search.js "></script>  
-    
+     <!-- my Java Script --> 
+     <script src="{{ asset('assets') }}/js/produk.js "></script> 
 </body>
 </html>
